@@ -31,7 +31,6 @@ function Calendar() {
     setDateValue(new Date(dateValue.getFullYear(), dateValue.getMonth() + 1));
   };
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
     setDateValue(new Date(dateValue.getFullYear(), Number(e.target.value)));
   };
   const getMonthData = () => {
@@ -111,6 +110,7 @@ function Calendar() {
           onChange={(e) => handleSelectChange(e)}
           value={dateValue.getFullYear()}
         >
+          <option value={2023}>2023</option>
           <option value={2024}>2024</option>
           <option value={2025}>2025</option>
         </select>
