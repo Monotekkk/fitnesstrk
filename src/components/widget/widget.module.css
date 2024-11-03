@@ -1,0 +1,13 @@
+.block {
+  width: 49%;
+  border: 0.5px solid black;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.column {
+  width: 50%;
+}

@@ -1,0 +1,29 @@
+.header{
+  width: 100%;
+  background-color:#34495e;
+  margin-bottom: 20px;
+}
+.container {
+  max-width: 1280px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav_link {
+  color: #fff;
+  text-decoration: none;
+  width: 18%;
+}
+.nav_item {
+  list-style-type: none;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+.nav_item:hover{
+  background-color: #7ca3cb;
+  text-decoration: underline #fff;
+}

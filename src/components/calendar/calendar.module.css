@@ -1,0 +1,41 @@
+.calendar {
+  margin: 5px;
+}
+.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 5px auto;
+}
+.button {
+  border: 1px solid #dbdada;
+  background-color: rgb(2, 136, 184);
+  font-size: 12px;
+  padding: 2px 20px;
+}
+.button:active {
+  box-shadow: 3px 2px 22px 1px rgb(0, 0, 0);
+}
+.button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.calendar{
+  display: flex;
+  flex-wrap: wrap;
+}
+.calendarElement{
+  width: 14%;
+}
+.day {
+  color: black;
+}
+.today {
+  color: orange;
+}
+@media (max-width: 1080px) {
+  .block {
+    flex-direction: column;
+  }
+}
