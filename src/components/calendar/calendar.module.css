@@ -9,17 +9,28 @@
   margin: 5px auto;
 }
 .button {
+  box-sizing: border-box;
+  height: 21px;
   border: 1px solid #dbdada;
-  background-color: rgb(2, 136, 184);
+  background-color: #34495e;;
   font-size: 12px;
   padding: 2px 20px;
+  border-radius: 2rem;
+  outline: 2px solid black;
+  box-shadow: 2px 2px;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+  color: #fff;
 }
 .button:active {
-  box-shadow: 3px 2px 22px 1px rgb(0, 0, 0);
+  height: 20px;
+  box-shadow: none;
+  transform: translate(2px, 2px);
 }
 .button:hover {
   cursor: pointer;
   text-decoration: underline;
+  background-color: #7ca3cb;
 }
 .calendar{
   display: flex;
@@ -30,9 +41,11 @@
 }
 .day {
   color: black;
+  cursor: pointer;
 }
 .today {
   color: orange;
+  cursor: pointer;
 }
 @media (max-width: 1080px) {
   .block {

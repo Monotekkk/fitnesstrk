@@ -8,7 +8,7 @@ function Header() {
           <Link to={"/"} className={style.nav_link}>
             <li className={style.nav_item}>Главная</li>
           </Link>
-          <Link to={"/"} className={style.nav_link}>
+          <Link to={"/gym"} className={style.nav_link}>
             <li className={style.nav_item}>Тренировки</li>
           </Link>
           <Link to={"/"} className={style.nav_link}>
