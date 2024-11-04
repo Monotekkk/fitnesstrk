@@ -95,7 +95,6 @@ function Calendar() {
           {"<"}
         </button>
         <select
-          defaultValue={nowDate.getMonth()}
           value={dateValue.getMonth()}
           onChange={(e) => handleSelectChange(e)}
         >
@@ -106,7 +105,6 @@ function Calendar() {
           ))}
         </select>
         <select
-          defaultValue={nowDate.getFullYear()}
           onChange={(e) => handleSelectChange(e)}
           value={dateValue.getFullYear()}
         >
