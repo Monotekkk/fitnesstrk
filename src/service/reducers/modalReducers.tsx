@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 interface IModalState {
   modalVisible: Boolean,
   modalContent: string,
@@ -15,9 +15,9 @@ const modalReducer = createSlice({
   initialState,
   reducers: {
     modalOpen: (state, action) => {
-      state.modalVisible = true,
-      state.modalContent = action.payload.modalContent,
-      state.modalDate = action.payload.modalDate
+      state.modalVisible = true;
+      state.modalContent = action.payload.modalContent;
+      state.modalDate = action.payload.modalDate;
     },
     modalClose: (state) => {
       state.modalVisible = false;

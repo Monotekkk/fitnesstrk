@@ -1,5 +1,8 @@
 .calendar {
   margin: 5px;
+  border: solid 1px #000;
+  box-shadow: 1px 1px;
+  background-color:#dbdada;
 }
 .block {
   display: flex;

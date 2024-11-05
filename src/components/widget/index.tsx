@@ -1,23 +1,21 @@
 import Calendar from "../calendar";
+import List from "../List";
 import style from "./widget.module.css";
 interface TWidget {
   type: "work" | "eat";
 }
 function Widget({ type }: TWidget) {
   return (
-    <div className={style.block}>
-      <h2 className={style.header}>
-        {type === "work"
-          ? "Тренировки"
-          : type === "eat"
-          ? "Еда"
-          : "Ещё какой-то тип"}{" "}
-        на этой неделе
-      </h2>
-      <div className={style.column}>
-        <Calendar/>
+    <>
+      <div className={style.block}>
+        <div className={style.column}>
+          <Calendar />
+        </div>
+        <div className={style.column}>
+          <List />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 export default Widget;

@@ -5,11 +5,17 @@
   border-radius: 2px;
   background-color: #ffffff;
   padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
 }
 .header {
   text-align: center;
   margin-bottom: 20px;
 }
 .column {
+  display: flex;
   width: 50%;
+  justify-content: space-between; 
 }

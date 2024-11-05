@@ -1,12 +1,12 @@
 import { useEffect, useState, ChangeEvent, MouseEvent } from "react";
 import style from "./calendar.module.css";
-import Modal from "../modal";
 import { useAppDispatch } from "../../service/store/store";
 import { modalOpen } from "../../service/reducers/modalReducers";
 function Calendar() {
   const [dateValue, setDateValue] = useState<Date>(new Date());
-  const [nowDate, setNowDate] = useState<Date>(new Date());
+  const [nowDate,] = useState<Date>(new Date());
   const [currentMonth, setCurrentMonth] = useState<Date[][] | undefined[][]>();
+  const [yearsValue, setYearsValue] = useState<string[]>();
   const dispatch = useAppDispatch();
   const arrMonth = [
     "Январь",
@@ -31,7 +31,11 @@ function Calendar() {
     setDateValue(new Date(dateValue.getFullYear(), dateValue.getMonth() + 1));
   };
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setDateValue(new Date(dateValue.getFullYear(), Number(e.target.value)));
+    if (+e.target.value > 1970) {
+      setDateValue(new Date(Number(e.target.value), dateValue.getMonth()));
+    } else {
+      setDateValue(new Date(dateValue.getFullYear(), Number(e.target.value)));
+    }
   };
   const getMonthData = () => {
     let result: Date[][] | undefined[][] = [];
@@ -82,6 +86,16 @@ function Calendar() {
       })
     );
   };
+  useEffect(()=>{
+    let options:string[] = [];
+    for(let i = 0; i < 10; i++){
+      options.unshift((new Date().getFullYear() - i).toString());
+    }
+    for(let i = 1; i < 11; i++){
+      options.push((new Date().getFullYear() + i).toString());
+    }
+    setYearsValue(options);
+  }, [])
   useEffect(() => {
     getMonthData();
   }, [dateValue]);
@@ -107,10 +121,12 @@ function Calendar() {
         <select
           onChange={(e) => handleSelectChange(e)}
           value={dateValue.getFullYear()}
-        >
-          <option value={2023}>2023</option>
-          <option value={2024}>2024</option>
-          <option value={2025}>2025</option>
+        > 
+        {
+          yearsValue && yearsValue.map((year) =>{
+            return <option value={year}>{year}</option>
+          })
+        }
         </select>
         <button
           className={style.button}
@@ -140,11 +156,13 @@ function Calendar() {
                         className={
                           new Date(
                             date.getDate(),
-                            date.getMonth()
+                            date.getMonth(),
+                            date.getFullYear()
                           ).toDateString() ===
                           new Date(
                             nowDate.getDate(),
-                            nowDate.getMonth()
+                            nowDate.getMonth(),
+                            nowDate.getFullYear()
                           ).toDateString()
                             ? style.today
                             : style.day
