@@ -6,7 +6,7 @@ interface IModalState {
 }
 const initialState: IModalState = {
   modalVisible: false,
-  modalContent: 'test',
+  modalContent: 'za eto ebut',
   modalDate: new Date().toISOString()
 
 };

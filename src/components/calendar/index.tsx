@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../service/store/store";
 import { modalOpen } from "../../service/reducers/modalReducers";
 function Calendar() {
   const [dateValue, setDateValue] = useState<Date>(new Date());
-  const [nowDate,] = useState<Date>(new Date());
+  const nowDate= new Date();
   const [currentMonth, setCurrentMonth] = useState<Date[][] | undefined[][]>();
   const [yearsValue, setYearsValue] = useState<string[]>();
   const dispatch = useAppDispatch();
@@ -86,18 +86,16 @@ function Calendar() {
       })
     );
   };
-  useEffect(()=>{
-    let options:string[] = [];
-    for(let i = 0; i < 10; i++){
-      options.unshift((new Date().getFullYear() - i).toString());
-    }
-    for(let i = 1; i < 11; i++){
-      options.push((new Date().getFullYear() + i).toString());
-    }
-    setYearsValue(options);
-  }, [])
   useEffect(() => {
     getMonthData();
+    let options:string[] = [];
+    for(let i = 0; i < 10; i++){
+      options.unshift((dateValue.getFullYear() - i).toString());
+    }
+    for(let i = 1; i < 11; i++){
+      options.push((dateValue.getFullYear() + i).toString());
+    }
+    setYearsValue(options);
   }, [dateValue]);
   return (
     <div className={style.calendar}>
@@ -121,10 +119,10 @@ function Calendar() {
         <select
           onChange={(e) => handleSelectChange(e)}
           value={dateValue.getFullYear()}
-        > 
+        >
         {
-          yearsValue && yearsValue.map((year) =>{
-            return <option value={year}>{year}</option>
+          yearsValue && yearsValue.map((year, index) =>{
+            return <option key={index} value={year}>{year}</option>
           })
         }
         </select>
