@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className={style.header}>
-      <nav>
+      <nav className={style.navbar}>
+      <Link to={"/"} className={style.nav_link}>
+              <p className={style.nav_link}>logo</p>
+          </Link>
         <ul className={style.container}>
           <Link to={"/"} className={style.nav_link}>
             <li className={style.nav_item}>Главная</li>

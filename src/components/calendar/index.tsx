@@ -152,7 +152,7 @@ function Calendar() {
                         data-day={date}
                         onClick={(e) => handleDayClick(e)}
                         className={
-                          new Date(
+                          (new Date(
                             date.getDate(),
                             date.getMonth(),
                             date.getFullYear()
@@ -162,8 +162,8 @@ function Calendar() {
                             nowDate.getMonth(),
                             nowDate.getFullYear()
                           ).toDateString()
-                            ? style.today
-                            : style.day
+                            ? `${style.day} ${style.today}`
+                            : style.day) 
                         }
                         key={index}
                       >

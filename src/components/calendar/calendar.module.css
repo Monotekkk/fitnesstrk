@@ -1,8 +1,7 @@
 .calendar {
   margin: 5px;
-  border: solid 1px #000;
-  box-shadow: 1px 1px;
-  background-color:#dbdada;
+  border: solid 1px rgb(232, 234, 238);
+  padding: 5px;
 }
 .block {
   display: flex;
@@ -13,27 +12,19 @@
 }
 .button {
   box-sizing: border-box;
-  height: 21px;
-  border: 1px solid #dbdada;
-  background-color: #34495e;;
+  height: 30px;
   font-size: 12px;
-  padding: 2px 20px;
-  border-radius: 2rem;
-  outline: 2px solid black;
-  box-shadow: 2px 2px;
+  padding: 10px;
+  font-weight: 700; 
   cursor: pointer;
   transition: all 0.1s ease-out;
-  color: #fff;
-}
-.button:active {
-  height: 20px;
-  box-shadow: none;
-  transform: translate(2px, 2px);
+  color: #ffffff65;
+  border: none;
+  background-color: inherit; 
+  color: #777777 ;
 }
 .button:hover {
   cursor: pointer;
-  text-decoration: underline;
-  background-color: #7ca3cb;
 }
 .calendar{
   display: flex;
@@ -45,10 +36,22 @@
 .day {
   color: black;
   cursor: pointer;
+  padding: 9px 10px;
+  margin: 2px;
+  text-align: center;
+  border:1px solid #ffffff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+}
+.day:hover {
+  border:1px solid #808080;
+  border-radius: 50%;
 }
 .today {
-  color: orange;
+  color: #1976d2;
   cursor: pointer;
+  font-weight: 700;
 }
 @media (max-width: 1080px) {
   .block {
