@@ -4,7 +4,7 @@
   border: 0.5px solid black;
   border-radius: 2px;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,5 +17,10 @@
 .column {
   display: flex;
   width: 50%;
-  justify-content: space-between; 
+  justify-content: space-between;
+}
+@media (width < 1023px) {
+  .block {
+    flex-direction: column;
+  }
 }

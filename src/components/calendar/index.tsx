@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../service/store/store";
 import { modalOpen } from "../../service/reducers/modalReducers";
 function Calendar() {
   const [dateValue, setDateValue] = useState<Date>(new Date());
-  const nowDate= new Date();
+  const nowDate = new Date();
   const [currentMonth, setCurrentMonth] = useState<Date[][] | undefined[][]>();
   const [yearsValue, setYearsValue] = useState<string[]>();
   const dispatch = useAppDispatch();
@@ -88,27 +88,39 @@ function Calendar() {
   };
   useEffect(() => {
     getMonthData();
-    let options:string[] = [];
-    for(let i = 0; i < 10; i++){
+    let options: string[] = [];
+    for (let i = 0; i < 10; i++) {
       options.unshift((dateValue.getFullYear() - i).toString());
     }
-    for(let i = 1; i < 11; i++){
+    for (let i = 1; i < 11; i++) {
       options.push((dateValue.getFullYear() + i).toString());
     }
     setYearsValue(options);
   }, [dateValue]);
   return (
     <div className={style.calendar}>
-      <div className={style.block}>
+      <div className={style.buttonBlock}>
         <button
           className={style.button}
           onClick={() => handlePrevButtonClick()}
         >
-          {"<"}
+          {
+            <svg
+            className={style.svg}
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 32 32"
+            >
+              <path d="M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z"></path>
+            </svg>
+          }
         </button>
         <select
           value={dateValue.getMonth()}
           onChange={(e) => handleSelectChange(e)}
+          className={style.select}
         >
           {arrMonth.map((month, index) => (
             <option key={index} value={index}>
@@ -119,18 +131,33 @@ function Calendar() {
         <select
           onChange={(e) => handleSelectChange(e)}
           value={dateValue.getFullYear()}
+          className={style.select}
         >
-        {
-          yearsValue && yearsValue.map((year, index) =>{
-            return <option key={index} value={year}>{year}</option>
-          })
-        }
+          {yearsValue &&
+            yearsValue.map((year, index) => {
+              return (
+                <option key={index} value={year}>
+                  {year}
+                </option>
+              );
+            })}
         </select>
         <button
           className={style.button}
           onClick={() => handleNextButtonClick()}
         >
-          {">"}
+          {
+            <svg
+              className={style.svg}
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 32 32"
+            >
+              <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+            </svg>
+          }
         </button>
       </div>
       <div className={style.block}>
@@ -138,7 +165,7 @@ function Calendar() {
           <thead>
             <tr>
               {arrWeekDays.map((day, index) => (
-                <th key={index}>{day}</th>
+                <th className={style.day} key={index}>{day}</th>
               ))}
             </tr>
           </thead>
@@ -152,7 +179,7 @@ function Calendar() {
                         data-day={date}
                         onClick={(e) => handleDayClick(e)}
                         className={
-                          (new Date(
+                          new Date(
                             date.getDate(),
                             date.getMonth(),
                             date.getFullYear()
@@ -163,7 +190,7 @@ function Calendar() {
                             nowDate.getFullYear()
                           ).toDateString()
                             ? `${style.day} ${style.today}`
-                            : style.day) 
+                            : style.day
                         }
                         key={index}
                       >
