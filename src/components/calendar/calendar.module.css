@@ -77,10 +77,12 @@
   align-items: center;
   background-color: #1976d2;
   color: #fff;
+  padding: 2px;
 }
 .select{
   height: 32px;
   border: 1px solid #1976d2;
+  background-color: #fff;
 }
 @media (max-width: 1080px) {
   .block {
