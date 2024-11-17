@@ -4,6 +4,7 @@
   padding: 5px;
   display: flex;
   flex-direction: column;
+  height: fit-content;
 }
 .block {
   display: flex;
@@ -67,6 +68,11 @@
   border-radius: 50%;
 }
 .today {
+  color: #d21919;
+  cursor: pointer;
+  font-weight: 700;
+}
+.selectedDate {
   color: #1976d2;
   cursor: pointer;
   font-weight: 700;

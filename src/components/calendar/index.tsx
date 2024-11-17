@@ -5,6 +5,7 @@ import { modalOpen } from "../../service/reducers/modalReducers";
 function Calendar() {
   const [dateValue, setDateValue] = useState<Date>(new Date());
   const nowDate = new Date();
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [currentMonth, setCurrentMonth] = useState<Date[][] | undefined[][]>();
   const [yearsValue, setYearsValue] = useState<string[]>();
   const dispatch = useAppDispatch();
@@ -79,6 +80,7 @@ function Calendar() {
   };
   const handleDayClick = (e: MouseEvent<HTMLElement>) => {
     const day = e.currentTarget.getAttribute("data-day");
+    day && setSelectedDate(new Date(day));
     dispatch(
       modalOpen({
         modalContent: "как много у меня сегодня дел",
@@ -106,7 +108,7 @@ function Calendar() {
         >
           {
             <svg
-            className={style.svg}
+              className={style.svg}
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -165,7 +167,9 @@ function Calendar() {
           <thead>
             <tr>
               {arrWeekDays.map((day, index) => (
-                <th className={style.day} key={index}>{day}</th>
+                <th className={style.day} key={index}>
+                  {day}
+                </th>
               ))}
             </tr>
           </thead>
@@ -190,7 +194,18 @@ function Calendar() {
                             nowDate.getFullYear()
                           ).toDateString()
                             ? `${style.day} ${style.today}`
-                            : style.day
+                            : new Date(
+                                date.getDate(),
+                                date.getMonth(),
+                                date.getFullYear()
+                              ).toDateString() ===
+                              new Date(
+                                selectedDate.getDate(),
+                                selectedDate.getMonth(),
+                                selectedDate.getFullYear()
+                              ).toDateString()
+                            ? `${style.day} ${style.selectedDate}`
+                            : `${style.day}`
                         }
                         key={index}
                       >

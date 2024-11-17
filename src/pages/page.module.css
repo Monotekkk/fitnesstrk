@@ -1,6 +1,22 @@
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-  }
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.homePage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  text-align: center;
+}
