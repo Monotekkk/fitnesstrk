@@ -1,7 +1,6 @@
 .calendar {
-  margin: 5px;
+  margin: 10px;
   border: solid 1px rgb(232, 234, 238);
-  padding: 5px;
   display: flex;
   flex-direction: column;
   height: fit-content;
